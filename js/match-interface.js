@@ -88,7 +88,19 @@ $(document).ready(function(){
 
   $(".difficulty").click(function(){
     gameDiff = parseInt($(this).find(".diff-val").html());
-    console.log(gameDiff);
+    if (gameDiff === 0) {
+      $(".easy").addClass("click-easy");
+      $(".medium").removeClass("click-medium");
+      $(".hard").removeClass("click-hard");
+    } else if (gameDiff === 1) {
+      $(".medium").addClass("click-medium");
+      $(".easy").removeClass("click-easy");
+      $(".hard").removeClass("click-hard");
+    } else if (gameDiff === 2) {
+      $(".hard").addClass("click-hard");
+      $(".medium").removeClass("click-medium");
+      $(".easy").removeClass("click-easy");
+    }
   });
 
 

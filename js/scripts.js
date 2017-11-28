@@ -6,7 +6,11 @@ export class Game{
     this.cardsArr = [];
     this.initializeCards();
     this.firstCard = null;
+    this.firstCardX = null;
+    this.firstCardY = null;
     this.secondCard = null;
+    this.secondCardX = null;
+    this.secondCardY = null;
     this.status = "ready";
   }
   // using 4x4 layout
@@ -28,20 +32,32 @@ export class Game{
     if (this.firstCard !== null){
       // this is backwards on purpose because it goes columns to rows
       this.secondCard = this.cardsArr[y][x];
+      this.secondCardX = x;
+      this.secondCardY = y;
     } else {
       this.firstCard = this.cardsArr[y][x];
+      this.firstCardX = x;
+      this.firstCardY = y;
     }
   }
 
   compareCards(){
     let result = false;
-    if (this.firstCard === this.secondCard){
+    if (this.firstCard === this.secondCard && !(this.firstCardX == this.secondCardX && this.firstCardY == this.secondCardY)){
       this.matches++;
       this.score++;
       result = true;
+      if (this.matches === 8 && this.timer > 0) {
+        this.status = "win";
+      }
     }
     this.firstCard = null;
+    this.firstCardX = null;
+    this.firstCardY = null;
     this.secondCard = null;
+    this.secondCardX = null;
+    this.secondCardY = null;
+
     return result;
   }
 
@@ -51,7 +67,7 @@ export class Game{
       this.timer--;
       if (this.timer === 0){
         clearInterval(timer);
-        this.status = "over";
+        this.status = "lose";
       }
     }, 1000);
   }

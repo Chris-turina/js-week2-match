@@ -7,7 +7,7 @@ export class Game{
     this.initializeCards();
     this.firstCard = null;
     this.secondCard = null;
-    this.status = "ongoing";
+    this.status = "ready";
   }
   // using 4x4 layout
   initializeCards(){
@@ -34,20 +34,24 @@ export class Game{
   }
 
   compareCards(){
+    let result = false;
     if (this.firstCard === this.secondCard){
       this.matches++;
       this.score++;
+      result = true;
     }
     this.firstCard = null;
     this.secondCard = null;
+    return result;
   }
 
   startTimer(){
+    this.status = "ongoing";
     let timer = setInterval(() => {
       this.timer--;
       if (this.timer === 0){
         clearInterval(timer);
-        this.status = "loss";
+        this.status = "over";
       }
     }, 1000);
   }

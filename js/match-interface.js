@@ -19,7 +19,7 @@ function generateBoard() {
   for( let i = 0; i < 4; i++){
     htmlString += `<div class='card-row'>`;
     for( let j = 0; j < 4; j++){
-      htmlString += `<div class='card' value="${newGame.cardsArr[i][j]}" x-coord="${j}" y-coord="${i}"><img src="${gifArr[newGame.cardsArr[i][j]]}">${newGame.cardsArr[i][j]}</div>`;
+      htmlString += `<div class='card-wrapper'><div class='card' value="${newGame.cardsArr[i][j]}" x-coord="${j}" y-coord="${i}"><img src="${gifArr[newGame.cardsArr[i][j]]}"></div></div>`;
     }
     htmlString += `</div>`;
   }
@@ -35,8 +35,8 @@ function loseGame() {
     },
     success: function(response) {
       $("#board").fadeOut();
-      $("#test").prepend(`<img src="${response.data.image_original_url}">`);
-      $("#test").show();
+      $("#end-game").prepend(`<img src="${response.data.image_original_url}">`);
+      $("#end-game").show();
     },
     error: function() {
       alert("OOPS IT BROKE... but you won~ :D");
@@ -53,8 +53,8 @@ function winGame() {
     },
     success: function(response) {
       $("#board").fadeOut();
-      $("#test").prepend(`<img src="${response.data.image_original_url}">`);
-      $("#test").show();
+      $("#end-game").prepend(`<img src="${response.data.image_original_url}">`);
+      $("#end-game").show();
     },
     error: function() {
       alert("OOPS IT BROKE... anyway, you lost.");
@@ -87,6 +87,8 @@ $(document).ready(function(){
 
   $("#start").click(function(){
     $("#start").hide();
+    $("#timer").show();
+    $("#score").show();
     generateBoard();
     updateScoreboard();
 

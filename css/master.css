@@ -1,15 +1,69 @@
-.card {
-  border: 2px solid #000;
-  height: 250px;
-  width: 250px; }
+body {
+  display: flex;
+  justify-content: center; }
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+  height: 1000px; }
+
+.title {
+  background-color: orange;
+  width: 800px;
+  text-align: center;
+  border-radius: 40px; }
+  .title h1 {
+    margin: 0;
+    font-size: 130px;
+    padding-bottom: 10px; }
+
+#start {
+  margin-top: 200px;
+  background-color: orange;
+  border-radius: 40px; }
+  #start p {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 50px;
+    margin-bottom: 0; }
+
+#end-game, #timer, #score {
+  display: none; }
 
 .card-row {
   display: flex; }
 
 .selected {
   background-color: honeydew; }
+  .selected img {
+    animation: cardflip 1s ease-in-out 1;
+    animation-fill-mode: forwards; }
 
 .matched {
   background-color: aquamarine; }
+
+.card-wrapper {
+  background-color: black;
+  margin: 5px; }
+
+.card {
+  border: 2px solid #000;
+  height: 250px;
+  width: 250px;
+  margin: 5px;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .card img {
+    transform: rotateY(90deg); }
+
+@keyframes cardflip {
+  100% {
+    transform: rotateY(0deg); } }
 
 /*# sourceMappingURL=master.css.map */

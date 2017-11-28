@@ -19,8 +19,9 @@ function generateBoard() {
   for( let i = 0; i < 4; i++){
     htmlString += `<div class='card-row'>`;
     for( let j = 0; j < 4; j++){
-      htmlString += `<div class='card-wrapper'><div class='card' value="${newGame.cardsArr[i][j]}" x-coord="${j}" y-coord="${i}"><img src="${gifArr[newGame.cardsArr[i][j]]}"></div></div>`;
-    }
+      // htmlString += `<div class='card-wrapper'><div class='card' value="${newGame.cardsArr[i][j]}" x-coord="${j}" y-coord="${i}"><img src="${gifArr[newGame.cardsArr[i][j]]}"></div></div>`;
+      htmlString += `<div class='card-wrapper'><div class='card' value="${newGame.cardsArr[i][j]}" x-coord="${j}" y-coord="${i}"><img src="${gifArr[newGame.cardsArr[i][j]]}">${newGame.cardsArr[i][j]}</div></div>`;
+        }
     htmlString += `</div>`;
   }
   $("#board").append(`${htmlString}`);
@@ -60,6 +61,7 @@ function winGame() {
       alert("OOPS IT BROKE... anyway, you lost.");
     }
   });
+  $(".title").addClass("title-win");
 }
 
 $(document).ready(function(){
@@ -92,6 +94,11 @@ $(document).ready(function(){
     generateBoard();
     updateScoreboard();
 
+    //cheat code
+    $(".title h1").click(function(){
+      winGame();
+    });
+
     $(".card").each(function(){
       $(this).click(function(){
         // First card clicked starts timer
@@ -116,7 +123,11 @@ $(document).ready(function(){
             $(".selected").off("click");
             $(".selected").addClass("matched");
           }
-          $(".selected").removeClass("selected");
+          setTimeout(function(){
+            $(".selected").removeClass("selected");
+          }, 1000) // flips back
+
+          // before $(".selected").removeClass("selected");
         }
       });
     });

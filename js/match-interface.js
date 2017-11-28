@@ -29,7 +29,7 @@ function generateBoard() {
 
 function loseGame() {
   $.ajax({
-    url: "http://api.giphy.com/v1/gifs/random?api_key=UEPKY1Th8yey7GKEx6Ma3W5GMpJ0Sszq&tag=lose&rating=pg&fmt=json",
+    url: "http://api.giphy.com/v1/gifs/random?api_key=UEPKY1Th8yey7GKEx6Ma3W5GMpJ0Sszq&tag=loser&rating=pg&fmt=json",
     type: "GET",
     data: {
       format: "json"
@@ -65,9 +65,12 @@ function winGame() {
 }
 
 $(document).ready(function(){
-  // test
+  let gameDiff = 0;
+  // get all yo pics
+  const randomTags = ["crazy", "wild", "unicorn", "pokemon", "cute", "lemur"];
+  let randomTag = randomTags[Math.floor(Math.random()*randomTags.length)];
   $.ajax({
-    url: "http://api.giphy.com/v1/gifs/search?api_key=UEPKY1Th8yey7GKEx6Ma3W5GMpJ0Sszq&q=crazy&limit=8&rating=pg&lang=en&fmt=json",
+    url: `http://api.giphy.com/v1/gifs/search?api_key=UEPKY1Th8yey7GKEx6Ma3W5GMpJ0Sszq&q=${randomTag}&limit=8&rating=pg&lang=en&fmt=json`,
     type: "GET",
     data: {
       format: "json"
@@ -75,6 +78,7 @@ $(document).ready(function(){
     success: function(response) {
       for (let k = 0; k < 8; k++){
         gifArr.push(response.data[k].images.fixed_width.url);
+        console.log("got yo pics");
       }
     },
     error: function() {
@@ -82,15 +86,18 @@ $(document).ready(function(){
     }
   });
 
-  // make sure actually getting gif aff.
-  // console.log(gifArr);
-
+  $(".difficulty").click(function(){
+    gameDiff = parseInt($(this).find(".diff-val").html());
+    console.log(gameDiff);
+  });
 
 
   $("#start").click(function(){
     $("#start").hide();
+    $(".difficulty").hide();
     $("#timer").show();
     $("#score").show();
+    newGame.setDifficulty(gameDiff);
     generateBoard();
     updateScoreboard();
 
@@ -102,7 +109,7 @@ $(document).ready(function(){
     $(".card").each(function(){
       $(this).click(function(){
         // First card clicked starts timer
-        if (newGame.timer === 30 && newGame.status === "ready"){
+        if (newGame.status === "ready"){
           newGame.startTimer();
           const scoreboardInterval = setInterval(function() {
             updateScoreboard();
@@ -134,7 +141,7 @@ $(document).ready(function(){
   });
 
   // refresh-button click code
-  // fix this later since they have to press the start button again 😤 🤗
+  // fix this later? since they have to press the start button again 😤 🤗
   $("#refresh-button").click(function(){
     location.reload();
   });

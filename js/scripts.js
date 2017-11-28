@@ -1,6 +1,6 @@
 export class Game{
-  constructor(){
-    this.timer = 30;
+  constructor(number){
+    this.timer = 90;
     this.score = 0;
     this.matches = 0;
     this.cardsArr = [];
@@ -70,5 +70,9 @@ export class Game{
         this.status = "lose";
       }
     }, 1000);
+  }
+
+  setDifficulty(number = 0){
+    this.timer = 90 - (30 * number);
   }
 }

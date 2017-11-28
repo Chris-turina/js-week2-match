@@ -31,7 +31,7 @@ body {
     font-size: 50px;
     margin-bottom: 0; }
 
-#end-game, #timer, #score {
+#end-game, #timer, #score, .diff-val {
   display: none; }
 
 .card-row {

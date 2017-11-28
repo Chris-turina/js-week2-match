@@ -64,7 +64,7 @@ gulp.task("concatInterface", function() {
 // ======= Build CSS ======= //
 gulp.task("buildCSS", function() {
   gulp.src(["css/*.css"])
-    .pipe(concat("styles.css"))
+    .pipe(concat("master.css"))
     .pipe(gulp.dest("./build/css"));
 });
 

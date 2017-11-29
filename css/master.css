@@ -40,7 +40,7 @@ body {
 .selected {
   background-color: honeydew; }
   .selected img {
-    animation: cardflip 1s ease-in-out 1;
+    animation: cardflip .5s ease-in-out 1;
     animation-fill-mode: forwards; }
 
 .card-wrapper {
@@ -70,7 +70,7 @@ body {
   animation: color-change 1s ease 1;
   animation-fill-mode: forwards; }
   .matched img {
-    animation: cardflip 1s ease-in-out 1;
+    animation: cardflip 1s linear 0s 1;
     animation-fill-mode: forwards; }
 
 .title-win {

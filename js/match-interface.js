@@ -20,7 +20,7 @@ function generateBoard() {
     htmlString += `<div class='card-row'>`;
     for( let j = 0; j < 4; j++){
       // htmlString += `<div class='card-wrapper'><div class='card' value="${newGame.cardsArr[i][j]}" x-coord="${j}" y-coord="${i}"><img src="${gifArr[newGame.cardsArr[i][j]]}"></div></div>`;
-      htmlString += `<div class='card-wrapper'><div class='card' value="${newGame.cardsArr[i][j]}" x-coord="${j}" y-coord="${i}"><img src="${gifArr[newGame.cardsArr[i][j]]}">${newGame.cardsArr[i][j]}</div></div>`;
+      htmlString += `<div class='card-wrapper'><div class='card' value="${newGame.cardsArr[i][j]}" x-coord="${j}" y-coord="${i}"><img src="${gifArr[newGame.cardsArr[i][j]]}"></div></div>`;
         }
     htmlString += `</div>`;
   }

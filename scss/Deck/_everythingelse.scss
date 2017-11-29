@@ -49,7 +49,7 @@ body {
 .selected {
   background-color: honeydew;
   img {
-    animation: cardflip 1s ease-in-out 1;
+    animation: cardflip .5s ease-in-out 1;
     animation-fill-mode: forwards;
 
   }
@@ -86,7 +86,7 @@ body {
   animation-fill-mode: forwards;
 
   img {
-    animation: cardflip 1s ease-in-out 1;
+    animation: cardflip 1s linear 0s 1;
     animation-fill-mode: forwards;
 
   }

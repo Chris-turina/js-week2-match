@@ -1,0 +1,62 @@
+#board {
+  width: 1080px;
+  height: 920px;
+  position: relative; }
+
+.card-row {
+  position: absolute; }
+  .card-row:nth-child(1) {
+    background-color: green;
+    animation: row1 1.5s linear 0s 1;
+    animation-fill-mode: forwards; }
+  .card-row:nth-child(2) {
+    animation: row2 1.5s linear 0s 1;
+    animation-fill-mode: forwards; }
+  .card-row:nth-child(3) {
+    animation: row3 1.5s linear 0s 1;
+    animation-fill-mode: forwards; }
+
+.card-wrapper {
+  position: absolute; }
+  .card-wrapper:nth-child(1) {
+    animation: wrapper1 1.5s linear 0s 1;
+    animation-fill-mode: forwards; }
+  .card-wrapper:nth-child(2) {
+    animation: wrapper2 1.5s linear 0s 1;
+    animation-fill-mode: forwards; }
+  .card-wrapper:nth-child(3) {
+    animation: wrapper3 1.5s linear 0s 1;
+    animation-fill-mode: forwards; }
+
+@keyframes row1 {
+  0% {
+    top: 0px; }
+  100% {
+    top: 225px; } }
+@keyframes row2 {
+  0% {
+    top: 0px; }
+  100% {
+    top: 450px; } }
+@keyframes row3 {
+  0% {
+    top: 0px; }
+  100% {
+    top: 675px; } }
+@keyframes wrapper1 {
+  0% {
+    left: 0px; }
+  100% {
+    left: 270px; } }
+@keyframes wrapper2 {
+  0% {
+    left: 0px; }
+  100% {
+    left: 540px; } }
+@keyframes wrapper3 {
+  0% {
+    left: 0px; }
+  100% {
+    left: 810px; } }
+
+/*# sourceMappingURL=crazydeck.css.map */
